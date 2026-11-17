@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Nheb Panha — Flutter &amp; Full-Stack Developer</title>
+  <meta name="description" content="Nheb Panha is a Flutter and full-stack developer in Phnom Penh, Cambodia, building mobile apps, web applications and the APIs behind them with Flutter, Nuxt, Laravel and Supabase.">
+  <meta name="author" content="Nheb Panha">
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#09090B" media="(prefers-color-scheme: dark)">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nheb Panha — Flutter &amp; Full-Stack Developer">
+  <meta property="og:description" content="Mobile apps, web applications and backends built with Flutter, Nuxt, Laravel and Supabase.">
+  <meta property="og:image" content="image/panha_portrait.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nheb Panha — Flutter &amp; Full-Stack Developer">
+  <meta name="twitter:description" content="Mobile apps, web applications and backends built with Flutter, Nuxt, Laravel and Supabase.">
+  <meta name="twitter:image" content="image/panha_portrait.jpg">
+
+  <!-- iOS -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Nheb Panha">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    :root { --bg: #FFFFFF; --text: #0F172A; --muted: #475569; --accent: #4F46E5; --border: #E2E8F0; }
+    :root[data-theme="dark"] { --bg: #09090B; --text: #F4F4F5; --muted: #A1A1AA; --accent: #818CF8; --border: #27272A; }
+    html, body { margin: 0; background: var(--bg); color: var(--text);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+
+    /* Loading screen, removed on the flutter-first-frame event. */
+    #loader { position: fixed; inset: 0; z-index: 10; display: flex; align-items: center;
+      justify-content: center; background: var(--bg); transition: opacity .3s ease; }
+    #loader.done { opacity: 0; pointer-events: none; }
+    #loader .box { width: min(280px, 80vw); text-align: center; }
+    #loader .name { font-size: 22px; font-weight: 600; letter-spacing: -.3px; }
+    #loader .role { margin-top: 6px; font-size: 14px; color: var(--muted); }
+    #loader .bar { margin-top: 24px; height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    #loader .bar span { display: block; height: 100%; width: 40%; background: var(--accent);
+      animation: load 1.1s ease-in-out infinite; }
+    @keyframes load { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+    @media (prefers-reduced-motion: reduce) { #loader .bar span { animation: none; width: 100%; } }
+
+    /* Plain-HTML summary for crawlers and link previews; visually hidden. */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    noscript .summary { max-width: 720px; margin: 48px auto; padding: 0 20px; line-height: 1.6; }
+    noscript a { color: var(--accent); }
+  </style>
+  <script>
+    // Pick light/dark the same way the app does: saved choice, else the OS.
+    (function () {
+      var theme = null;
+      try {
+        var saved = localStorage.getItem('flutter.theme');
+        if (saved) theme = saved.replace(/"/g, '');
+      } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+  <div id="loader" aria-hidden="true">
+    <div class="box">
+      <div class="name">Nheb Panha</div>
+      <div class="role">Flutter &amp; Full-Stack Developer</div>
+      <div class="bar"><span></span></div>
+    </div>
+  </div>
+
+  <main class="sr-only" id="summary">
+    <h1>Nheb Panha — Flutter &amp; Full-Stack Developer</h1>
+    <p>Flutter and full-stack developer in Phnom Penh, Cambodia (UTC+7), building mobile apps, web applications and the backends behind them since 2022. Available for freelance and full-time roles.</p>
+    <h2>Projects</h2>
+    <ul>
+      <li>RED ANT Express — E-Commerce, Flutter and Dart</li>
+      <li>RED ANT Merchant — Merchant App, Flutter and Dart</li>
+      <li>RED ANT Driver — Delivery App, Flutter and Dart</li>
+      <li>E-Shop Native — E-Commerce, Kotlin and Swift</li>
+    </ul>
+    <h2>Skills</h2>
+    <ul>
+      <li>Mobile: Flutter, Dart, BLoC &amp; Riverpod, Firebase</li>
+      <li>Frontend: Nuxt, Vue 3, TypeScript, Tailwind CSS</li>
+      <li>Backend: Laravel, Node.js &amp; Express, Supabase, Telegram Bot API</li>
+      <li>Data: PostgreSQL, MySQL, Redis</li>
+      <li>Tooling: Git &amp; GitHub Actions, Docker, Figma</li>
+    </ul>
+    <h2>Contact</h2>
+    <ul>
+      <li>Email: <a href="mailto:nhebpanha78@gmail.com">nhebpanha78@gmail.com</a></li>
+      <li>Telegram: <a href="https://t.me/nhebpanha">@nhebpanha</a></li>
+      <li>GitHub: <a href="https://github.com/panhanheb">github.com/panhanheb</a></li>
+    </ul>
+  </main>
+
+  <noscript>
+    <style>#loader { display: none; } #summary { position: static; width: auto; height: auto; margin: 0; clip: auto; overflow: visible; white-space: normal; }</style>
+    <div class="summary">This site needs JavaScript for the full experience. A summary is shown above.</div>
+  </noscript>
+
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      // The app's own semantics tree takes over; avoid duplicate screen-reader text.
+      var summary = document.getElementById('summary');
+      if (summary) summary.setAttribute('aria-hidden', 'true');
+      var loader = document.getElementById('loader');
+      if (!loader) return;
+      loader.classList.add('done');
+      setTimeout(function () { loader.remove(); }, 400);
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

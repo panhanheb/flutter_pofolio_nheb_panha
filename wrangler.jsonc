@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "panha",
+  "main": "api/index.ts",
+  "compatibility_date": "2025-06-01",
+  "assets": {
+    "directory": "./build/web",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "observability": { "enabled": true }
+  // Secrets: set in Cloudflare → Worker "panha" → Settings → Variables and Secrets
+  // (see .env.example). Never put them in the Flutter app or web/.
+}
