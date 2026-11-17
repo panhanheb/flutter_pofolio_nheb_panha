@@ -6,12 +6,15 @@ import '../../data/repositories/portfolio_repository.dart';
 /// Project search and category filter.
 class ProjectsViewModel extends ChangeNotifier {
   ProjectsViewModel(PortfolioRepository repository)
-      : _all = repository.projects,
+      : _repository = repository,
+        _all = repository.projects,
         lead = repository.projectsLead;
 
   static const allCategory = 'All';
 
-  final List<Project> _all;
+  List<Project> _all;
+  final PortfolioRepository _repository;
+  bool _disposed = false;
   final String lead;
 
   String _query = '';
@@ -21,7 +24,7 @@ class ProjectsViewModel extends ChangeNotifier {
   String get category => _category;
 
   /// "All" plus the distinct categories, in data order.
-  late final List<String> categories = [
+  List<String> get categories => [
     allCategory,
     ...{for (final p in _all) p.category},
   ];
@@ -40,6 +43,15 @@ class ProjectsViewModel extends ChangeNotifier {
     }).toList();
   }
 
+  /// Replaces the bundled projects with the Supabase ones (if any).
+  Future<void> load() async {
+    final loaded = await _repository.fetchProjects();
+    if (_disposed || identical(loaded, _all)) return;
+    _all = loaded;
+    if (!categories.contains(_category)) _category = allCategory;
+    notifyListeners();
+  }
+
   void search(String query) {
     if (query == _query) return;
     _query = query;
@@ -50,5 +62,11 @@ class ProjectsViewModel extends ChangeNotifier {
     if (category == _category) return;
     _category = category;
     notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    _disposed = true;
+    super.dispose();
   }
 }

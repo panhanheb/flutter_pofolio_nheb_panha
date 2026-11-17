@@ -8,6 +8,7 @@ import 'data/repositories/portfolio_repository.dart';
 import 'data/repositories/theme_repository.dart';
 import 'data/services/api_client.dart';
 import 'data/services/preferences_service.dart';
+import 'data/services/supabase_service.dart';
 import 'ui/app/app.dart';
 import 'ui/app/theme_view_model.dart';
 
@@ -18,7 +19,9 @@ Future<void> main() async {
   // Services → repositories.
   final api = ApiClient();
   final deps = AppDependencies(
-    portfolio: const PortfolioRepository(),
+    portfolio: PortfolioRepository(
+      supabase: SupabaseService(SupabaseConfig.fromEnvironment()),
+    ),
     chat: ChatRepository(api),
     contact: ContactRepository(api),
   );

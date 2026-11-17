@@ -12,7 +12,7 @@ class WritingView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cols = context.isLg ? 3 : (context.isSm ? 2 : 1);
-    final vm = context.read<WritingViewModel>();
+    final vm = context.watch<WritingViewModel>();
     return Section(
       alt: true,
       child: Column(

@@ -3,7 +3,7 @@
 //
 // Secrets (Cloudflare → Worker → Settings → Variables and Secrets):
 //   NUXT_GEMINI_API_KEY, NUXT_TELEGRAM_BOT_TOKEN, NUXT_TELEGRAM_CHAT_ID,
-//   NUXT_SUPABASE_SERVICE_ROLE_KEY, NUXT_PUBLIC_SUPABASE_URL, NUXT_PUBLIC_SUPABASE_ANON_KEY
+//   NUXT_SUPABASE_SERVICE_ROLE_KEY (secret), NUXT_PUBLIC_SUPABASE_URL (wrangler.jsonc vars)
 
 interface Env {
   ASSETS: { fetch(req: Request): Promise<Response> }
@@ -218,7 +218,9 @@ function escapeHtml(s: string): string {
 
 async function supabaseInsert(env: Env, table: string, row: Record<string, unknown>): Promise<boolean> {
   const base = env.NUXT_PUBLIC_SUPABASE_URL
-  const key = env.NUXT_SUPABASE_SERVICE_ROLE_KEY || env.NUXT_PUBLIC_SUPABASE_ANON_KEY
+  // contact_submissions and chat_logs have RLS with no public policies
+  // (supabase/schema.sql), so only the service-role key can write them.
+  const key = env.NUXT_SUPABASE_SERVICE_ROLE_KEY
   if (!base || !key || !base.startsWith('http')) return false
   const res = await fetch(`${base.replace(/\/$/, '')}/rest/v1/${table}`, {
     method: 'POST',

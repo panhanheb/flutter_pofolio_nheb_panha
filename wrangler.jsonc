@@ -9,7 +9,12 @@
     "not_found_handling": "single-page-application",
     "run_worker_first": ["/api/*"]
   },
-  "observability": { "enabled": true }
-  // Secrets: set in Cloudflare → Worker "panha" → Settings → Variables and Secrets
-  // (see .env.example). Never put them in the Flutter app or web/.
+  "observability": { "enabled": true },
+  // Public, non-secret settings.
+  "vars": {
+    "NUXT_PUBLIC_SUPABASE_URL": "https://wyuxriiwljkcfqayrvpd.supabase.co"
+  }
+  // Secrets (NOT here): `npx wrangler secret put NUXT_SUPABASE_SERVICE_ROLE_KEY`
+  // and likewise NUXT_GEMINI_API_KEY, NUXT_TELEGRAM_BOT_TOKEN, NUXT_TELEGRAM_CHAT_ID.
+  // For `wrangler dev`, put them in .dev.vars (git-ignored). See .env.example.
 }

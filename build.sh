@@ -14,4 +14,8 @@ export PATH="${FLUTTER_DIR}/bin:${PATH}"
 flutter config --no-analytics --enable-web >/dev/null
 flutter --version
 flutter pub get
-flutter build web --release
+# Public Supabase settings (anon key only). Set SUPABASE_ANON_KEY as a build
+# environment variable in Cloudflare; without it the site uses bundled content.
+flutter build web --release \
+  --dart-define=SUPABASE_URL="${SUPABASE_URL:-https://wyuxriiwljkcfqayrvpd.supabase.co}" \
+  --dart-define=SUPABASE_ANON_KEY="${SUPABASE_ANON_KEY:-}"
